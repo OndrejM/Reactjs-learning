@@ -35,18 +35,20 @@
             */
             CommentList: React.createClass({
                 render: function() {
-                    var comments = this.props.data.map(function(comment) {
-                        return (
-                            <c.Comment author={comment.author}>
-                                {comment.text}
-                            </c.Comment>
-                        );
-                    });
+                    var data = this.props.data;
                     return (
                       <div className="commentList">
-                        {comments}
+                        {data.map(function(comment) {
+                            return (
+                                <c.Comment author={comment.author}>
+                                    {comment.text}
+                                </c.Comment>
+                            );
+                        })}
                       </div>
                     );
+                    
+
                 }
             }),
 
