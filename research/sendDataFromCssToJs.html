@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<title>Is img content loaded when not displayed?</title>
+<style type="text/css">
+#data {
+	display: none;
+	font-family: XXX;
+}
+</style>
+</head>
+
+<body>
+
+<div id="data">
+</div>
+
+<div id="output">AAA</div>
+
+<script type="text/javascript">
+	var d = document.getElementById('data');
+	var output = document.getElementById('output');
+	var o = getComputedStyle(d).fontFamily;
+	console.log(o);
+	output.innerHTML = o;
+	
+</script>
+
+</body>
+</html>
