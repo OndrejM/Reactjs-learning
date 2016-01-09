@@ -1,0 +1,46 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello React</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+        <script type="text/jsx">
+    
+        var Content = content();
+        var refList = [
+            {href: 'reactjs-template/index.html', label: 'ReactJS Template'}
+        ];
+    
+        React.render(
+          <Content className="main" refList={refList}/>,
+          document.getElementById('content')
+        );
+    
+        function content() {
+            return React.createClass({
+                    getInitialState: function() {
+                        return {refList: this.props.refList};
+                      },
+                    render: function() {
+                        return (
+                            <ul>
+                            {this.state.refList.map(e => 
+                                <li>
+                                  <a href={e.href}>{e.label ? e.label : e.href}</a>
+                                </li>
+                            )}
+                            </ul>
+                        );
+                    }
+                });
+        }
+
+        </script>
+    </head>
+    <body>
+        <div id="content">
+        </div>
+    </body>
+</html>
