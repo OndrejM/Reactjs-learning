@@ -1,8 +1,22 @@
-
+const {
+  RaisedButton,
+  Styles
+} = mui;
+const ThemeManager = Styles.ThemeManager;
 
 // App component - represents the whole app
 
 App = React.createClass({
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(Styles.LightRawTheme)
+    };
+  },
 
   getTasks() {
 
@@ -18,7 +32,7 @@ App = React.createClass({
 
   },
 
- 
+
 
   renderTasks() {
 
@@ -30,7 +44,7 @@ App = React.createClass({
 
   },
 
- 
+
 
   render() {
 
@@ -38,13 +52,14 @@ App = React.createClass({
 
       <div className="container">
 
+        <RaisedButton label="Default" />
         <header>
 
           <h1>Todo List</h1>
 
         </header>
 
- 
+
 
         <ul>
 
@@ -59,4 +74,3 @@ App = React.createClass({
   }
 
 });
-
