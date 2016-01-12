@@ -1,76 +1,53 @@
 const {
-  RaisedButton,
+  Checkbox,
   Styles
 } = mui;
 const ThemeManager = Styles.ThemeManager;
 
-// App component - represents the whole app
-
+/* App component - represents the whole app
+ */
 App = React.createClass({
 
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
 
-  getChildContext: function() {
+  getChildContext() {
     return {
       muiTheme: ThemeManager.getMuiTheme(Styles.LightRawTheme)
     };
   },
 
-  getTasks() {
-
-    return [
-
-      { _id: 1, text: "This is task 1" },
-
-      { _id: 2, text: "This is task 2" },
-
-      { _id: 3, text: "This is task 3" }
-
-    ];
-
-  },
-
-
-
-  renderTasks() {
-
-    return this.getTasks().map((task) => {
-
-      return <Task key={task._id} task={task} />;
-
-    });
-
-  },
-
-
-
   render() {
-
     return (
-
       <div className="container">
-
-        <RaisedButton label="Default" />
         <header>
-
-          <h1>Todo List</h1>
-
+          <h1>{appCtx.lbl['app.title']}</h1>
         </header>
-
-
-
         <ul>
-
-          {this.renderTasks()}
-
+          {this._renderOneTimeInvestment()}
         </ul>
-
       </div>
-
     );
+  },
 
-  }
+  _renderOneTimeInvestment() {
+    return this._renderInputSection(appCtx.lbl['one.time.investment'], <div>BODY</div>);
+  },
+
+  _renderInputSection(label, body) {
+    return (
+      <div className="input-section">
+        <div className='input-section-header'>
+          <Checkbox
+            label={label}
+            defaultChecked={true}/>
+        </div>
+        <div className='input-section-body'>
+          {body}
+        </div>
+      </div>
+    );
+  },
 
 });
